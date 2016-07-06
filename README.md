@@ -2,7 +2,7 @@
 ---
 ##My first app
 _____
-The game 'Busy Buzzing' involves around a bee, **Bumbo**
+The game 'Busy Buzzing' revolves around a bee, **Bumbo**
 
 The game follows his attempt to make it through the *rainforest* without harming himself.
 
