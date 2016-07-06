@@ -48,3 +48,13 @@ ______
 ______
 
 ### *Instructions for you to download the app onto your phone!*
+
+1)Open this page on an Android device of your choice.
+
+2)Open the 'apk' folder.
+
+3)Download 'android-debug.apk' and install in on your device.
+
+(If install wasn't allowed, a few quick settings changed should do the job )
+
+4)Open and Play.
