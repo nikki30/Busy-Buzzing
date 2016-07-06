@@ -115,14 +115,14 @@ public class CroakInTheCreek extends ApplicationAdapter {
             }
 
             if (Gdx.input.justTouched()) {
-                velocity = -25;  //adds to birds height and shoots it up into air
+                velocity = -25;  //adds to birds Y coordinate and shoots it up into air
             }
             for(int i=0;i<numberOfTubes;i++) {
-                if(tubeX[i] < -topTube.getWidth()){
-                    tubeX[i] = numberOfTubes * distanceBetweenTubes;
-                    tubeOffset[i] = (randomGenerator.nextFloat()- 0.5f)*(Gdx.graphics.getHeight() - gap - 200);
+                if(tubeX[i] < -topTube.getWidth()){     //Ensures that the last tube just moved into the left of the screen (fully off the screen)
+                    tubeX[i] = numberOfTubes * distanceBetweenTubes;    //we want to shift it COMPLETELY to the right of the screen so it can appear again
+                    tubeOffset[i] = (randomGenerator.nextFloat()- 0.5f)*(Gdx.graphics.getHeight() - gap - 200);   //sets the pipes so that the offset is different every time.
                 }else {
-                    tubeX[i] -= tubeVelocity;
+                    tubeX[i] -= tubeVelocity;   //if it is not to the complete left and off the screen, then just move it to the left by a fixed amount.
                 }
                 batch.draw(topTube, tubeX[i], Gdx.graphics.getHeight() / 2 + gap / 2 + tubeOffset[i]);
                 batch.draw(bottomTube, tubeX[i], Gdx.graphics.getHeight() / 2 - gap / 2 - bottomTube.getHeight() + tubeOffset[i]);
@@ -130,9 +130,9 @@ public class CroakInTheCreek extends ApplicationAdapter {
                 bottomTubeRectangles[i] = new Rectangle(tubeX[i],Gdx.graphics.getHeight() / 2 - gap / 2 - bottomTube.getHeight() + tubeOffset[i], bottomTube.getWidth(), bottomTube.getHeight());
             }
 
-            if(beeY > 0) { //either tap or bird being above bottom of screen should push it up
-                velocity += gravity;
-                beeY -= velocity;
+            if(beeY > 0) { // as long as bird is flying, a tap should increase its velocity by a fixed amount.
+                velocity += gravity;   
+                beeY -= velocity;    //Y coordinate of bird is increased by 'velocity' amount and then it drops a little by 'gravity' amount 
             }else{
                 gameState = 2; //gameover
             }
